@@ -29,11 +29,7 @@ const TaskSchema = new mongoose.Schema({
             enum: ["low", "medium", "high"],
             default: "low",
           },
-          user: {
-            type: mongoose.Schema.ObjectId,
-            ref: "User",
-            required: true,
-          },
+         
   
     } ,{timestamps: true});
 

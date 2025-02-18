@@ -17,7 +17,7 @@ export const createTask = asyncHandler(async (req, res) =>{
         dueDate,
         priority,
         status,
-        user:  req.user._id,
+        // user:  req.user._id,
       })
    
        await task.save();
@@ -31,13 +31,13 @@ export const createTask = asyncHandler(async (req, res) =>{
 });
 export const getTasks = asyncHandler(async (req, res) => {
     try {
-      const userId = req.user._id;
+      // const userId = req.user._id;
   
-      if (!userId) {
-        res.status(400).json({ message: "User not found!" });
-      }
+      // if (!userId) {
+      //   res.status(400).json({ message: "User not found!" });
+      // }
   
-      const tasks = await Taskmodel.find({ user: userId });
+      const tasks = await Taskmodel.find();
   
       res.status(200).json({
         length: tasks.length,
@@ -59,7 +59,7 @@ export const getTasks = asyncHandler(async (req, res) => {
         res.status(400).json({ message: "Please provide a task id" });
       }
   
-      const task = await Taskmodel.findById(id);
+      const task = await Taskmodel.findById(userId);
   
       if (!task) {
         res.status(404).json({ message: "Task not found!" });
